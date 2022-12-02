@@ -1,5 +1,4 @@
-import { getUserData } from './util.js';
-
+import { getUserData } from "./util.js";
 const host = 'http://localhost:3030';
 
 async function request(method, url, data) {
@@ -9,7 +8,7 @@ async function request(method, url, data) {
     };
 
     if (data !== undefined) {
-        options.headers['Content-Type'] = 'Application/json';
+        options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
     }
     const user = getUserData();
@@ -27,6 +26,11 @@ async function request(method, url, data) {
         if (response.ok == false) {
             throw new Error(response.message);
         }
+
+        // if(response.status == 403) {
+        //     sessionStorage.clear();
+        // }
+
         return result;
     }
     catch (err) {
